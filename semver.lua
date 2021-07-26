@@ -1,9 +1,9 @@
 --semver.lua for Tom.lib - forked from https://github.com/kikito/semver.lua.
 
 local semver = {
-  _VERSION     = '1.2.1',
-  _DESCRIPTION = 'semver for Lua',
-  _URL         = 'https://github.com/kikito/semver.lua',
+  _VERSION     = "1.2.1",
+  _DESCRIPTION = "semver for Lua",
+  _URL         = "https://github.com/kikito/semver.lua",
   _LICENSE     = [[
     MIT LICENSE
 
@@ -31,12 +31,12 @@ local semver = {
 }
 
 local function checkPositiveInteger(number, name)
-  assert(number >= 0, name .. ' must be a valid positive number')
-  assert(math.floor(number) == number, name .. ' must be an integer')
+  assert(number >= 0, name .. " must be a valid positive number")
+  assert(math.floor(number) == number, name .. " must be an integer")
 end
 
 local function present(value)
-  return value and value ~= ''
+  return value and value ~= ""
 end
 
 -- splitByDot("a.bbc.d") == {"a", "bbc", "d"}
@@ -89,7 +89,7 @@ end
 
 local function parseVersion(str)
   local sMajor, sMinor, sPatch, sPrereleaseAndBuild = str:match("^(%d+)%.?(%d*)%.?(%d*)(.-)$")
-  assert(type(sMajor) == 'string', ("Could not extract version number(s) from %q"):format(str))
+  assert(type(sMajor) == "string", ("Could not extract version number(s) from %q"):format(str))
   local major, minor, patch = tonumber(sMajor), tonumber(sMinor), tonumber(sPatch)
   local prerelease, build = parsePrereleaseAndBuild(sPrereleaseAndBuild)
   return major, minor, patch, prerelease, build
@@ -191,7 +191,7 @@ end
 local function new(major, minor, patch, prerelease, build)
   assert(major, "At least one parameter is needed")
 
-  if type(major) == 'string' then
+  if type(major) == "string" then
     major,minor,patch,prerelease,build = parseVersion(major)
   end
   patch = patch or 0
