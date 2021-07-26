@@ -155,15 +155,15 @@ end
 
 local methods = {}
 
-function methods:nextMajor()
+function methods:NextMajor()
     return semver(self.major + 1, 0, 0)
 end
 
-function methods:nextMinor()
+function methods:NextMinor()
     return semver(self.major, self.minor + 1, 0)
 end
 
-function methods:nextPatch()
+function methods:NextPatch()
     return semver(self.major, self.minor, self.patch + 1)
 end
 
