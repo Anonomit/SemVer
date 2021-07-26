@@ -1,3 +1,5 @@
+--semver.lua for Tom.lib - forked from https://github.com/kikito/semver.lua.
+
 local semver = {
   _VERSION     = '1.2.1',
   _DESCRIPTION = 'semver for Lua',
