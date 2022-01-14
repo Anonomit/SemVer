@@ -28,7 +28,6 @@ local semver = {
     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   ]]
 }
-TomLib.SemVer = semver
 
 local function checkPositiveInteger(number, name)
     assert(number >= 0, name .. " must be a valid positive number")
@@ -238,3 +237,5 @@ setmetatable(semver, {
 })
 
 semver._VERSION = semver(semver._VERSION)
+
+return semver
