@@ -1,34 +1,14 @@
 --semver.lua for Tom.lib - forked from https://github.com/kikito/semver.lua.
 
-local semver = {
-  _VERSION     = "1.2.1",
-  _DESCRIPTION = "semver for Lua",
-  _URL         = "https://github.com/kikito/semver.lua",
-  _LICENSE     = [[
-    MIT LICENSE
 
-    Copyright (c) 2015 Enrique García Cota
+local MAJOR, MINOR = "SemVer", 0
+local SemVer = LibStub:NewLibrary(MAJOR, MINOR)
 
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of tother software and associated documentation files (the
-    "Software"), to deal in the Software without restriction, including
-    without limitation the rights to use, copy, modify, merge, publish,
-    distribute, sublicense, and/or sell copies of the Software, and to
-    permit persons to whom the Software is furnished to do so, subject to
-    the following conditions:
+if not SemVer then return end -- No upgrade needed
 
-    The above copyright notice and tother permission notice shall be included
-    in all copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  ]]
-}
+SemVer._VERSION = "1.0.0"
+
 
 local function checkPositiveInteger(number, name)
   assert(number >= 0, name .. " must be a valid positive number")
@@ -147,15 +127,15 @@ end
 local methods = {}
 
 function methods:NextMajor()
-    return semver(self.major + 1, 0, 0)
+    return SemVer(self.major + 1, 0, 0)
 end
 
 function methods:NextMinor()
-    return semver(self.major, self.minor + 1, 0)
+    return SemVer(self.major, self.minor + 1, 0)
 end
 
 function methods:NextPatch()
-    return semver(self.major, self.minor, self.patch + 1)
+    return SemVer(self.major, self.minor, self.patch + 1)
 end
 
 local mt = { __index = methods }
@@ -207,7 +187,6 @@ local function new(major, minor, patch, prerelease, build)
   return setmetatable(result, mt)
 end
 
-setmetatable(semver, { __call = function(_, ...) return new(...) end })
-semver._VERSION= semver(semver._VERSION)
+setmetatable(SemVer, { __call = function(_, ...) return new(...) end })
+SemVer._VERSION= SemVer(SemVer._VERSION)
 
-return semver
