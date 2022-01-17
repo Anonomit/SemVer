@@ -4,6 +4,7 @@ Semantic versioning for Lua.
 
 See http://semver.org/ for details about semantic versioning.
 
+
 # Documentation
 
 ``` lua
@@ -54,10 +55,16 @@ v(1,2,3):NextMajor() -- v2.0.0 . Minor and patch are reset to 0
 
 ```
 
+
 # Installation
 
+Install as you would with any other addon.
 
-Include the SemVer folder in whatever addon you want (for example on a libs/ folder). Make sure the toc file includes SemVer.xml. Then write this in any lua file where you want to use it:
+For developers:
+You can include SemVer as a library in whatever addon you want (for example in a libs/ folder). Make sure the toc file includes SemVer.xml or SemVer.lua. LibStub is a required library, so be sure to include that too (if it isn't already).
+
+
+Write this in any lua file where you want to use it:
 
 ``` lua
 local v = LibStub"SemVer"
@@ -72,6 +79,7 @@ local SemVer = LibStub"SemVer"
 ```
 
 Please make sure that you read the license, too.
+
 
 # Notes about version comparison
 

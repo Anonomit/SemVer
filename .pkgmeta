@@ -1,0 +1,11 @@
+package-as: SemVer
+enable-nolib-creation: no
+
+license-output: MIT-LICENSE.txt
+
+ignore:
+    - README.md
+
+manual-changelog:
+    filename: CHANGELOG.html
+    markup-type: html

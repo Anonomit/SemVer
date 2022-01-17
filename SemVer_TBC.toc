@@ -1,0 +1,15 @@
+## Interface: 20502
+## Version: 0.0.0
+## Author: Anonomit
+
+## Title: SemVer
+## Notes: Semantic versioning for Lua.
+
+## X-Embeds: LibStub
+
+
+embeds.xml
+
+SemVer.lua
+
+
