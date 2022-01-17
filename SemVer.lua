@@ -153,15 +153,13 @@ function mt:__lt(other)
   return smallerPrerelease(self.prerelease, other.prerelease)
   -- notice that build is ignored for precedence in semver 2.0.0
 end
--- This works like the "pessimisstic operator" in Rubygems.
--- if a and b are versions, a ^ b means "b is backwards-compatible with a"
--- in other words, "it's safe to upgrade from a to b"
+-- if a and b are versions, a ^ b means "a and b are compatible"
+-- in other words, "it's safe for a and b to communicate"
 function mt:__pow(other)
   if self.major == 0 then
     return self == other
   end
-  return self.major == other.major and
-         self.minor <= other.minor
+  return self.major == other.major
 end
 function mt:__tostring()
   local buffer = { ("%d.%d.%d"):format(self.major, self.minor, self.patch) }
