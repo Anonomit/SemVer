@@ -36,17 +36,19 @@ d = v("0.9.5+no.extensions.22")
 d.build -- "no.extensions.22"
 
 -- comparison & sorting
-v"1.2.3" == v(1,2,3)         -- true
-v"1.2.3" < v(4,5,6)          -- true
-v"1.2.3-alpha" < v"1.2.3"    -- true
-v"1.2.3" < v"1.2.3+build.1"  -- false, builds are ignored when comparing versions in SemVer
+v"1.2.3" == v(1,2,3)        -- true
+v"1.2.3" < v(4,5,6)         -- true
+v"1.2.3-alpha" < v"1.2.3"   -- true
+v"1.2.3" < v"1.2.3+build.1" -- false, builds are ignored when comparing versions in SemVer
 -- (see the "notes" section for more informaion about version comparison)
 
--- "pessimistic upgrade" operator: ^
--- a ^ b returns true if it"s safe to update from a to b
-v"2.0.1" ^ v"2.5.1" -- true - it"s safe to upgrade from 2.0.1 to 2.5.1
+-- compatibility operator: ^
+-- a ^ b returns true if a and b are compatible
+-- intended to be used for version comparison between users
+v"2.0.1" ^ v"2.5.1" -- true  - it's safe for versions 2.0.1 and 2.5.1 to communicate
+v"2.5.1" ^ v"2.0.1" -- true  - it's safe for versions 2.0.1 and 2.5.1 to communicate
 v"1.0.0" ^ v"2.0.0" -- false - 2.0.0 is not supposed to be backwards-compatible
-v"2.5.1" ^ v"2.0.1" -- false - 2.5.1 is more modern than 2.0.1.
+v"0.0.1" ^ v"0.5.1" -- false - Prerelease versions must be identical to be considered compatible
 
 -- getting newer versions
 v(1,0,0):NextPatch() -- v1.0.1
